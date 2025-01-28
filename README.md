@@ -17,7 +17,7 @@ The JSON files include the following data:
 
 ## API
 
-The current API vesion is `v1`.
+The current API version is `v1`.
 
 ### Endpoints
 
