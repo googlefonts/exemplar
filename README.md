@@ -2,7 +2,7 @@
 
 ## About
 
-The Exemplar project JSON endpoints redistribute Unicode CLDR (Common Locale Data Repository) exemplar, number, and punctuation encoding data by BCP 47 locale tag. The goal of this project is to provide easy client access to localized encoding requirements data for font development teams.
+The Exemplar project JSON endpoints include Unicode CLDR (Common Locale Data Repository) exemplar, number, and punctuation encoding data by BCP 47 locale tag. The goal of this project is to provide easy client access to localized encoding requirements data in a widely supported JSON format.
 
 This project leverages the ICU (International Components for Unicode) library to generate data that are consistent with the latest Unicode data standards.
 
@@ -17,13 +17,15 @@ The JSON files include the following data:
 
 ## API
 
+The current API vesion is `v1`.
+
 ### Endpoints
 
 The JSON data can be accessed at the following endpoints:
 
-- **Pretty-printed JSON**: `https://googlefonts.github.io/exemplar/icu_exemplars.json`
-- **Minified JSON**: `https://googlefonts.github.io/exemplar/icu_exemplars-min.json`
-- **Minified JSON, gzip compressed**: `https://googlefonts.github.io/exemplar/icu_exemplars-min.json.gz`
+- **Pretty-printed JSON**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars.json`
+- **Minified JSON**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json`
+- **Minified JSON, gzip compressed**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json.gz`
 
 The JSON endpoints above are ordered largest to smallest by file size.
 
@@ -89,7 +91,7 @@ Here is an example of fetching the minified JSON file with the requests library 
 ```python
 import requests
 
-url = 'https://googlefonts.github.io/exemplar/icu_exemplars-min.json'
+url = 'https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json'
 response = requests.get(url)
 
 if response.status_code == 200:
@@ -110,7 +112,7 @@ import json
 
 import requests
 
-url = 'https://googlefonts.github.io/exemplar/icu_exemplars-min.json.gz'
+url = 'https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json.gz'
 response = requests.get(url)
 
 if response.status_code == 200:
