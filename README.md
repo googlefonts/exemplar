@@ -21,7 +21,7 @@ The JSON files include the following data:
 
 The JSON data can be accessed at the following endpoints:
 
-- **Pretty-printed JSON**: `https://googlefonts.github.io/exemplar/icu_exemplars-min.json`
+- **Pretty-printed JSON**: `https://googlefonts.github.io/exemplar/icu_exemplars.json`
 - **Minified JSON**: `https://googlefonts.github.io/exemplar/icu_exemplars-min.json`
 - **Minified JSON, gzip compressed**: `https://googlefonts.github.io/exemplar/icu_exemplars-min.json.gz`
 
