@@ -13,7 +13,7 @@ The JSON files include the following data:
 - **Exemplar Characters**: Localized exemplar encoding sets, categorized into main, auxiliary, case-insensitive, case-mapped types. Separate fields are defined for single characters and sequences, where sequences are defined as strings of multiple exemplar encodings as defined by the ICU library.
 - **Number and Number Symbols**: Localized numbers and number symbols used for formatting numbers in various locales, including decimal separators, grouping separators, percent signs, and more.
 - **Punctuation**: Localized punctuation marks.
-- **Locale Tag Display Names**: 
+- **Locale Tag Display Names**: Human-friendly locale names by locale tag.
 
 ## API
 
