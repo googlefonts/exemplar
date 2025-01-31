@@ -53,7 +53,9 @@ def normalize_locale_id(localeID: str) -> str:
 
 def get_exemplars(localeID: str, extype: str = "main", option: int = 0) -> List[str]:
     """
-    Retrieve exemplars for a given locale and type. Reference:
+    Retrieve exemplars for a given locale and type.
+
+    Reference:
     https://cldr.unicode.org/translation/core-data/exemplars#exemplar-characters
 
     Parameters:
@@ -115,7 +117,9 @@ def get_locale_name(localeID: str) -> str:
 
 def get_number_symbols(localeID: str) -> Dict[str, Any]:
     """
-    Retrieve number symbols for a given locale. Reference:
+    Retrieve number symbols for a given locale.
+
+    Reference:
     https://cldr.unicode.org/translation/number-currency-formats/number-symbols
 
     Parameters:
