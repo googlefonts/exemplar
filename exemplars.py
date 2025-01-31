@@ -238,7 +238,7 @@ def validate_json_data(data: Dict[str, Any]) -> None:
     """
     try:
         # Load the JSON schema from a separate file
-        with open("schema.json", "r") as f:
+        with open("schema.json", "r", encoding="utf-8") as f:
             schema = json.load(f)
         jsonschema.validate(instance=data, schema=schema)
     except jsonschema.exceptions.ValidationError as e:
