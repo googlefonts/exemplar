@@ -2,13 +2,13 @@
 
 ## About
 
-The Exemplar project JSON endpoints include Unicode CLDR (Common Locale Data Repository) exemplar, number, punctuation and currency encoding data by BCP 47 locale tag. The goal of this project is to provide easy client access to localized encoding requirements data in a widely supported JSON format.
+The Exemplar API project JSON endpoints include Unicode CLDR (Common Locale Data Repository) exemplar, number, punctuation and currency encoding data by BCP 47 locale tag. The goal of this project is to provide easy client access to localized encoding data in a widely supported JSON format.
 
-This project leverages the ICU (International Components for Unicode) library to generate data that are consistent with the latest Unicode data standards.
+This project leverages the ICU (International Components for Unicode) library to generate localization data that are consistent with the latest Unicode data standards.
 
 ## Data
 
-The JSON files include the following data:
+The JSON API endpoints include the following data:
 - **ICU Version**: the ICU library version used to generate the data.
 - **Exemplar Characters**: Localized exemplar encoding sets, categorized into main, auxiliary, case-insensitive, & case-mapped types. Separate fields are defined for single characters and sequences, where sequences are defined as strings of multiple exemplar encodings as defined by the ICU library.
 - **Number and Number Symbols**: Localized numbers and number symbols used for formatting numbers in various locales, including decimal separators, grouping separators, percent signs, and more.
@@ -16,9 +16,17 @@ The JSON files include the following data:
 - **Currency Symbols**: Localized currency symbols or currency strings
 - **Locale Tag Display Names**: Human-friendly locale names by locale tag.
 
-## API
+### Versioning
 
-The current API version is `v1`.
+The current Exemplar API version is `v1`.
+
+The Exemplar API follows [semantic versioning](https://semver.org/) principles. Backwards compatibility is assured within major version releases. For example, all `v1` endpoints will remain backwards compatible with any changes or additions made within the `v1` version.
+
+The API version is defined in the endpoint URL with the following syntax:
+
+```
+https://googlefonts.github.io/exemplar/[VERSION]/[ENDPOINT]
+```
 
 ### Endpoints
 
