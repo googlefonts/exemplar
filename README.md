@@ -2,7 +2,7 @@
 
 ## About
 
-The Exemplar project JSON endpoints include Unicode CLDR (Common Locale Data Repository) exemplar, number, and punctuation encoding data by BCP 47 locale tag. The goal of this project is to provide easy client access to localized encoding requirements data in a widely supported JSON format.
+The Exemplar project JSON endpoints include Unicode CLDR (Common Locale Data Repository) exemplar, number, punctuation and currency encoding data by BCP 47 locale tag. The goal of this project is to provide easy client access to localized encoding requirements data in a widely supported JSON format.
 
 This project leverages the ICU (International Components for Unicode) library to generate data that are consistent with the latest Unicode data standards.
 
@@ -13,6 +13,7 @@ The JSON files include the following data:
 - **Exemplar Characters**: Localized exemplar encoding sets, categorized into main, auxiliary, case-insensitive, & case-mapped types. Separate fields are defined for single characters and sequences, where sequences are defined as strings of multiple exemplar encodings as defined by the ICU library.
 - **Number and Number Symbols**: Localized numbers and number symbols used for formatting numbers in various locales, including decimal separators, grouping separators, percent signs, and more.
 - **Punctuation**: Localized punctuation marks.
+- **Currency Symbols**: Localized currency symbols or currency strings
 - **Locale Tag Display Names**: Human-friendly locale names by locale tag.
 
 ## API
@@ -39,43 +40,44 @@ The JSON data follow a [repository-defined schema](schema.json). Below is an ove
 {
   "icu_version": "version_string",
   "locales": {
-    "[locale_id]": {
+    "locale_id": {
       "main": {
-        "single_chars": ["char1", "char2", ...],
-        "sequences": ["sequence1", "sequence2", ...]
+        "single_chars": ["char1", "char2"],
+        "sequences": ["seq1", "seq2"]
       },
       "auxiliary": {
-        "single_chars": ["char1", "char2", ...],
-        "sequences": ["sequence1", "sequence2", ...]
+        "single_chars": ["char1", "char2"],
+        "sequences": ["seq1", "seq2"]
       },
-      "punctuation": ["char1", "char2", ...],
+      "punctuation": ["punct1", "punct2"],
       "case_insensitive": {
-        "single_chars": ["char1", "char2", ...],
-        "sequences": ["sequence1", "sequence2", ...]
+        "single_chars": ["char1", "char2"],
+        "sequences": ["seq1", "seq2"]
       },
       "case_mapping": {
-        "single_chars": ["char1", "char2", ...],
-        "sequences": ["sequence1", "sequence2", ...]
+        "single_chars": ["char1", "char2"],
+        "sequences": ["seq1", "seq2"]
       },
       "numbers": {
-        "decimal": "char",
-        "group": "char",
-        "percent": "char",
-        "zero_digit": "char",
-        "digit": "char",
-        "pattern_digit": "char",
-        "plus_sign": "char",
-        "minus_sign": "char",
-        "exponential": "char",
-        "per_mille": "char",
-        "infinity": "char",
-        "nan": "char",
-        "digits": ["char0", "char1", ...]
-      }
+        "decimal": "decimal_char",
+        "group": "group_char",
+        "percent": "percent_char",
+        "zero_digit": "zero_digit_char",
+        "digit": "digit_char",
+        "pattern_digit": "pattern_digit_char",
+        "plus_sign": "plus_sign_char",
+        "minus_sign": "minus_sign_char",
+        "exponential": "exponential_char",
+        "per_mille": "per_mille_char",
+        "infinity": "infinity_char",
+        "nan": "nan_char",
+        "digits": ["digit1", "digit2"]
+      },
+      "currency": "currency_symbol"
     }
   },
   "display_names": {
-    "[locale_id]": "display_name"
+    "locale_id": "Locale Display Name"
   }
 }
 ```
@@ -124,9 +126,23 @@ else:
     print(f"Error fetching compressed exemplar characters: {response.status_code}")
 ```
 
+## Examples
+
+There are demo scripts in the [`examples` directory](examples/) that demonstrate how to use the Exemplar project JSON data. These examples include:
+
+- [**currency.py**](examples/currency.py): Demonstrates how to extract and print localized currency symbols and their Unicode codepoints from the JSON data.
+
 ## Development
 
-The JSON data are generated with the [`exemplars.py`](exemplars.py) script in the root of the repository.  The [schema.json](schema.json) file defines the JSON structure for validation testing at runtime.
+The JSON data are generated with the [`exemplars.py`](exemplars.py) script in the root of the repository.  The [schema.json](schema.json) file defines the JSON structure for validation testing at runtime.  The Python dependencies are defined in the [requirements.txt](requirements.txt) file.
+
+The JSON data can be generated with the following command:
+
+```
+$ python exemplars.py
+```
+
+JSON files write to the `docs` sub-directory. The output directory name is required by GitHub Pages and should not be changed.
 
 ## Changelog
 
