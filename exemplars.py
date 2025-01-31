@@ -12,13 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import icu
+import gzip
 import json
 import sys
-import jsonschema
-import gzip
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import Any, Dict, List, Optional
+
+import babel
+from babel.numbers import get_currency_symbol
+import icu
+import jsonschema
 
 # API version constant
 API_VERSION = "v1"
@@ -59,10 +62,10 @@ def get_exemplars(localeID: str, extype: str = "main", option: int = 0) -> List[
     option (int): The option for exemplar set.
 
     Returns:
-    list: Sorted list of exemplars.
+    List[str]: Sorted list of exemplars.
     """
     option = option if option in OPTIONS else 0
-    extype = extype.lower() if extype.lower() in EXEMPLAR_TYPES else None
+    extype = extype.lower() if extype.lower() in EXEMPLAR_TYPES else "main"
     localeID = normalize_locale_id(localeID)
     if localeID in icu.Collator.getAvailableLocales():
         collator = icu.Collator.createInstance(icu.Locale(localeID))
@@ -119,7 +122,7 @@ def get_number_symbols(localeID: str) -> Dict[str, Any]:
     localeID (str): The locale identifier.
 
     Returns:
-    dict: Dictionary of number symbols.
+    Dict[str, Any]: Dictionary of number symbols.
     """
     locale = icu.Locale(localeID)
     number_format = icu.NumberFormat.createInstance(locale)
@@ -153,15 +156,44 @@ def get_number_symbols(localeID: str) -> Dict[str, Any]:
     }
 
 
+def get_currency(localeID: str) -> Optional[str]:
+    """
+    Gets the Unicode currency symbol for a given locale tag.
+
+    Parameters:
+    localeID (str): The locale ID as a string.
+
+    Returns:
+    Optional[str]: The currency symbol as a string, or None if not found.
+    """
+    try:
+        norm_locale_id = normalize_locale_id(localeID)
+        babel_locale = babel.Locale.parse(norm_locale_id)
+        icu_locale = icu.Locale(norm_locale_id)
+        number_format = icu.NumberFormat.createInstance(icu_locale)
+        currency_code = number_format.getCurrency()
+
+        currency_symbol = get_currency_symbol(currency_code, locale=babel_locale)
+
+        if currency_symbol != "¤" and currency_symbol != "XXX":
+            return currency_symbol
+        else:
+            return None
+
+    except Exception as e:
+        print(f"Error getting currency symbol for {localeID}: {e}")
+        return None
+
+
 def categorize_exemplars(exemplars: List[str]) -> Dict[str, List[str]]:
     """
     Categorize exemplars into single characters and sequences.
 
     Parameters:
-    exemplars (list): List of exemplars.
+    exemplars (List[str]): List of exemplars.
 
     Returns:
-    dict: Dictionary with single characters and sequences.
+    Dict[str, List[str]]: Dictionary with single characters and sequences.
     """
     single_chars = [char for char in exemplars if len(char) == 1]
     sequences = [char for char in exemplars if len(char) > 1]
@@ -173,7 +205,7 @@ def generate_locale_data() -> Dict[str, Any]:
     Generate locale data for all available locales.
 
     Returns:
-    dict: Dictionary containing locale data.
+    Dict[str, Any]: Dictionary containing locale data.
     """
     data = {"icu_version": get_icu_version(), "locales": {}, "display_names": {}}
     for localeID in icu.Locale.getAvailableLocales():
@@ -187,6 +219,7 @@ def generate_locale_data() -> Dict[str, Any]:
             ),
             "case_mapping": categorize_exemplars(get_exemplars(localeID, "main", 4)),
             "numbers": get_number_symbols(localeID),
+            "currency": get_currency(localeID),
         }
         data["display_names"][localeID] = get_locale_name(localeID)
     return data
@@ -197,7 +230,7 @@ def validate_json_data(data: Dict[str, Any]) -> None:
     Validate JSON data against the schema.
 
     Parameters:
-    data (dict): JSON data to validate.
+    data (Dict[str, Any]): JSON data to validate.
     """
     try:
         # Load the JSON schema from a separate file
@@ -205,10 +238,10 @@ def validate_json_data(data: Dict[str, Any]) -> None:
             schema = json.load(f)
         jsonschema.validate(instance=data, schema=schema)
     except jsonschema.exceptions.ValidationError as e:
-        sys.stderr.write(f"JSON data validation error: {e.message}\n")
+        sys.stderr.write(f"JSON data validation error: {e}\n")
         sys.exit(1)
     except Exception as e:
-        sys.stderr.write(f"Error: {e.message}\n")
+        sys.stderr.write(f"Error: {e}\n")
         sys.exit(1)
 
 
@@ -217,7 +250,7 @@ def write_json_files(data: Dict[str, Any], output_dir: str) -> None:
     Write JSON data to files.
 
     Parameters:
-    data (dict): JSON data to write.
+    data (Dict[str, Any]): JSON data to write.
     output_dir (str): Directory to write the files to.
     """
     json_dir = Path(output_dir) / API_VERSION
