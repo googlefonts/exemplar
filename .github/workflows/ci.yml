@@ -1,0 +1,46 @@
+name: Continuous Integration Tests
+
+on:
+  push:
+    branches:
+      - "*" # This will trigger on pushes to *any* branch
+
+  pull_request_target:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    # Condition to prevent duplicate runs
+    if: github.event_name == 'push' || (github.event_name == 'pull_request_target' && github.event.pull_request.head.sha == github.sha)
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Important: Fetch the correct commit for pull_request_target
+          ref: ${{ github.event.pull_request.head.sha }} # For pull_request_target
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Run flake8
+        run: |
+          flake8 --config=.flake8
+
+      - name: Run pytest
+        run: |
+          pytest -c pytest.ini

@@ -189,7 +189,7 @@ def get_currency(localeID: str) -> Optional[str]:
         return None
 
 
-def categorize_exemplars(exemplars: List[str]) -> Dict[str, List[str]]:
+def categorize_exemplars(exemplars: List[str]) -> Dict[str, Optional[List[str]]]:
     """
     Categorize exemplars into single characters and sequences.
 
@@ -197,11 +197,14 @@ def categorize_exemplars(exemplars: List[str]) -> Dict[str, List[str]]:
     exemplars (List[str]): List of exemplars.
 
     Returns:
-    Dict[str, List[str]]: Dictionary with single characters and sequences.
+    Dict[str, Optional[List[str]]]: Dictionary with single characters and sequences.
     """
     single_chars = [char for char in exemplars if len(char) == 1]
     sequences = [char for char in exemplars if len(char) > 1]
-    return {"single_chars": single_chars, "sequences": sequences}
+    return {
+        "single_chars": single_chars if single_chars else None,
+        "sequences": sequences if sequences else None,
+    }
 
 
 def generate_locale_data() -> Dict[str, Any]:
