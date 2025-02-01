@@ -65,7 +65,6 @@ Define a pinned point release with a full release version number in `MAJOR.MINOR
 /gh/googlefonts/exemplar@1.0.0/api/data.json
 ```
 
-
 ### Data Structure
 
 The JSON data follow a [repository-defined schema](schema.json). Below is an overview of the structure:
@@ -85,14 +84,14 @@ The JSON data follow a [repository-defined schema](schema.json). Below is an ove
         "single_chars": ["char1", "char2"],
         "sequences": ["seq1", "seq2"]
       },
-      "punctuation": ["punct1", "punct2"],  // might be null
+      "punctuation": ["punct1", "punct2"],
       "case_insensitive": {
-        "single_chars": ["char1", "char2"],  // might be null
-        "sequences": ["seq1", "seq2"]  // might be null
+        "single_chars": ["char1", "char2"],
+        "sequences": ["seq1", "seq2"]
       },
       "case_mapping": {
-        "single_chars": ["char1", "char2"],  // might be null
-        "sequences": ["seq1", "seq2"]  // might be null
+        "single_chars": ["char1", "char2"],
+        "sequences": ["seq1", "seq2"]
       },
       "numbers": {
         "decimal": "decimal_char",
@@ -109,7 +108,7 @@ The JSON data follow a [repository-defined schema](schema.json). Below is an ove
         "nan": "nan_char",
         "digits": ["digit1", "digit2"]
       },
-      "currency": "currency_symbol"  // might be null
+      "currency": "currency_symbol"
     }
   },
   "display_names": {
@@ -117,6 +116,14 @@ The JSON data follow a [repository-defined schema](schema.json). Below is an ove
   }
 }
 ```
+
+**Note:** The following fields  may have null values that represent unavailable data:
+- `punctuation`
+- `case_insensitive.single_chars`
+- `case_insensitive.sequences`
+- `case_mapping.single_chars`
+- `case_mapping.sequences`
+- `currency`
 
 ## Example Usage
 
