@@ -61,7 +61,10 @@ def get_exemplars(localeID: str, extype: str = "main", option: int = 0) -> List[
     Parameters:
     localeID (str): The locale identifier.
     extype (str): The type of exemplars to retrieve (main, auxiliary, index, punctuation).
-    option (int): The option for exemplar set.
+    option (int): The option for exemplar set. Valid options are:
+        - 0: Default exemplar set
+        - 2: Case-insensitive exemplar set
+        - 4: Case-mapping exemplar set
 
     Returns:
     List[str]: Sorted list of exemplars.
