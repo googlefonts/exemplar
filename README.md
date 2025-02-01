@@ -1,5 +1,9 @@
 # Exemplar
 
+![API version](https://img.shields.io/badge/API%20version-v1-blue)
+![GitHub Release](https://img.shields.io/github/v/release/googlefonts/exemplar)
+![ICU version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgooglefonts.github.io%2Fexemplar%2Fv1%2Ficu_exemplars-min.json&query=%24.icu_version&label=ICU%20version)
+
 ## About
 
 The Exemplar API project JSON endpoints include Unicode CLDR (Common Locale Data Repository) exemplar, number, punctuation and currency encoding data by BCP 47 locale tag. The goal of this project is to provide easy client access to localized encoding data in a widely supported JSON format.
