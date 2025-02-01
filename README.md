@@ -2,7 +2,7 @@
 
 ![API version](https://img.shields.io/badge/API%20version-v1-blue)
 ![GitHub Release](https://img.shields.io/github/v/release/googlefonts/exemplar)
-![ICU version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgooglefonts.github.io%2Fexemplar%2Fv1%2Fdata.json&query=%24.icu_version&label=ICU%20version)
+![ICU version](https://img.shields.io/badge/dynamic/json?url=https://cdn.jsdelivr.net/gh/googlefonts/exemplar@1/api/data.json&query=%24.icu_version&label=ICU%20version)
 
 ## About
 
@@ -20,33 +20,50 @@ The JSON API endpoints include the following data:
 - **Currency Symbols**: Localized currency symbols or currency strings
 - **Locale Tag Display Names**: Human-friendly locale names by locale tag.
 
-### Versioning
-
-The current Exemplar API version is `v1`.
-
-The Exemplar API follows [semantic versioning](https://semver.org/) principles. Backwards compatibility is assured within major version releases. For example, all `v1` endpoints will remain backwards compatible with any changes or additions made within the `v1` version.
-
-The API version is defined in the endpoint URL with the following syntax:
-
-```
-https://googlefonts.github.io/exemplar/[VERSION]/data.json
-```
-
 ### Endpoints
 
-The JSON data can be accessed by GET request to one of the following endpoints:
+![jsDelivr Major Version Release Status](https://img.shields.io/website?url=https://cdn.jsdelivr.net/gh/googlefonts/exemplar@1/api/data.json&style=for-the-badge&logo=jsdelivr&label=jsDelivr%20v1%20Major)
+![jsDelivr Current Release Status](https://img.shields.io/website?url=https://cdn.jsdelivr.net/gh/googlefonts/exemplar@1.0.0/api/data.json&style=for-the-badge&logo=jsdelivr&label=jsDelivr%20v1.0.0)
 
-- **GitHub CDN**: `https://googlefonts.github.io/exemplar/v1/data.json`
-- **Netlify CDN**: `https://googlefonts-exemplar.netlify.app/v1/data.json` 
+#### Latest Release
 
-### Endpoints Status
+```
+https://cdn.jsdelivr.net/gh/googlefonts/exemplar@1/api/data.json
+```
 
-![GitHub CDN Build Status](https://img.shields.io/github/actions/workflow/status/googlefonts/exemplar/pages%2Fpages-build-deployment?branch=main&style=for-the-badge&logo=github&label=GitHub%20Build)
-![GitHub API Status](https://img.shields.io/website?url=https%3A%2F%2Fgooglefonts.github.io%2Fexemplar%2Fv1%2Fdata.json&style=for-the-badge&logo=github&label=GitHub%20API%20Status)
+#### Endpoint Versioning
 
+The Exemplar API follows [semantic versioning](https://semver.org/) principles. Backwards compatibility is assured within major version releases. For example, all `v1` endpoints will remain backwards compatible with any changes or additions made in the `v1.x.x` releases.
 
-![Netlify CDN Build Status](https://img.shields.io/netlify/dfd069d4-e4c6-42c3-aee5-d4115fd2bd37?logo=netlify&style=for-the-badge&label=Netlify%20Build)
-![Netlify API Status](https://img.shields.io/website?url=https%3A%2F%2Fgooglefonts-exemplar.netlify.app%2Fv1%2Fdata.json&style=for-the-badge&logo=netlify&label=Netlify%20API%20Status)
+The root endpoint is:
+
+```
+https://cdn.jsdelivr.net
+```
+
+Versioned endpoint construction uses the following syntax:
+
+```
+/gh/googlefonts/exemplar@[VERSION]/api/data.json
+```
+
+where `[VERSION]` represents a repository semantic version release number git tag, or git commit hash.
+
+#### Major Version Tracking Release
+
+Automatically update to new point releases across a major release cycle by using the major release number only:
+
+```
+/gh/googlefonts/exemplar@1/api/data.json
+```
+
+#### Pinned Version Release
+
+Define a pinned point release with a full release version number in `MAJOR.MINOR.PATCH` syntax:
+
+```
+/gh/googlefonts/exemplar@1.0.0/api/data.json
+```
 
 
 ### Data Structure
@@ -103,25 +120,6 @@ The JSON data follow a [repository-defined schema](schema.json). Below is an ove
 
 ## Example Usage
 
-### Python
-
-Here is an example of fetching the JSON with the requests library in Python:
-
-```python
-import requests
-
-url = 'https://googlefonts.github.io/exemplar/v1/data.json'
-response = requests.get(url)
-
-if response.status_code == 200:
-    data = response.json()
-    print(data)
-else:
-    print(f"Error fetching exemplar characters: {response.status_code}")
-```
-
-## Examples
-
 There are demo scripts in the [`examples` directory](examples/) that demonstrate how to use the Exemplar project JSON data. These examples include:
 
 - [**currency.py**](examples/currency.py): Demonstrates how to extract and print localized currency symbols and their Unicode codepoints from the JSON data.
@@ -136,7 +134,7 @@ The JSON data can be generated with the following command:
 $ python exemplars.py
 ```
 
-JSON files write to the `docs` sub-directory. The output directory name is required by GitHub Pages and should not be changed.
+JSON files write to the `api` sub-directory.
 
 ## Changelog
 
