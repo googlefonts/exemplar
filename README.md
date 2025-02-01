@@ -30,13 +30,10 @@ https://googlefonts.github.io/exemplar/[VERSION]/[ENDPOINT]
 
 ### Endpoints
 
-The JSON data can be accessed at the following endpoints:
+The JSON data can be accessed by GET request to one of the following endpoints:
 
-- **Pretty-printed JSON**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars.json`
-- **Minified JSON**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json`
-- **Minified JSON, gzip compressed**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json.gz`
-
-The JSON endpoints above are ordered largest to smallest by file size.
+- **GitHub CDN**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json`
+- **Netlify CDN**: `https://googlefonts-exemplar.netlify.app/v1/icu_exemplars-min.json`
 
 ### Data Structure
 
