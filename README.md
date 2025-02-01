@@ -2,7 +2,7 @@
 
 ![API version](https://img.shields.io/badge/API%20version-v1-blue)
 ![GitHub Release](https://img.shields.io/github/v/release/googlefonts/exemplar)
-![ICU version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgooglefonts.github.io%2Fexemplar%2Fv1%2Ficu_exemplars-min.json&query=%24.icu_version&label=ICU%20version)
+![ICU version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgooglefonts.github.io%2Fexemplar%2Fv1%2Fdata.json&query=%24.icu_version&label=ICU%20version)
 
 ## About
 
@@ -29,15 +29,15 @@ The Exemplar API follows [semantic versioning](https://semver.org/) principles. 
 The API version is defined in the endpoint URL with the following syntax:
 
 ```
-https://googlefonts.github.io/exemplar/[VERSION]/[ENDPOINT]
+https://googlefonts.github.io/exemplar/[VERSION]/data.json
 ```
 
 ### Endpoints
 
 The JSON data can be accessed by GET request to one of the following endpoints:
 
-- **GitHub CDN**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json`
-- **Netlify CDN**: `https://googlefonts-exemplar.netlify.app/v1/icu_exemplars-min.json` 
+- **GitHub CDN**: `https://googlefonts.github.io/exemplar/v1/data.json`
+- **Netlify CDN**: `https://googlefonts-exemplar.netlify.app/v1/data.json` 
 
 ### Endpoints Status
 
@@ -101,14 +101,12 @@ The JSON data follow a [repository-defined schema](schema.json). Below is an ove
 
 ### Python
 
-#### Minified JSON
-
-Here is an example of fetching the minified JSON file with the requests library in Python:
+Here is an example of fetching the JSON with the requests library in Python:
 
 ```python
 import requests
 
-url = 'https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json'
+url = 'https://googlefonts.github.io/exemplar/v1/data.json'
 response = requests.get(url)
 
 if response.status_code == 200:
@@ -116,29 +114,6 @@ if response.status_code == 200:
     print(data)
 else:
     print(f"Error fetching exemplar characters: {response.status_code}")
-```
-
-#### gzip Compressed JSON
-
-And here is an example of fetching the gzip compressed JSON file:
-
-
-```python
-import gzip
-import json
-
-import requests
-
-url = 'https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json.gz'
-response = requests.get(url)
-
-if response.status_code == 200:
-    compressed_content = response.content
-    decompressed_content = gzip.decompress(compressed_content)
-    data = json.loads(decompressed_content.decode('utf-8'))
-    print(data)
-else:
-    print(f"Error fetching compressed exemplar characters: {response.status_code}")
 ```
 
 ## Examples
