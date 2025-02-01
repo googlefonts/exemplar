@@ -39,11 +39,11 @@ The JSON data can be accessed by GET request to one of the following endpoints:
 - **GitHub CDN**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json`
 - **Netlify CDN**: `https://googlefonts-exemplar.netlify.app/v1/icu_exemplars-min.json` 
 
-### Endpoints Distribution Status
+### Endpoints Status
 
-![GitHub CDN Build Status](https://img.shields.io/github/actions/workflow/status/googlefonts/exemplar/pages%2Fpages-build-deployment?branch=main&style=for-the-badge&logo=github&label=GitHub)
+![GitHub CDN Build Status](https://img.shields.io/github/actions/workflow/status/googlefonts/exemplar/pages%2Fpages-build-deployment?branch=main&style=for-the-badge&logo=github&label=GitHub%20Build)
 
-![Netlify CDN Build Status](https://img.shields.io/netlify/dfd069d4-e4c6-42c3-aee5-d4115fd2bd37?logo=netlify&style=for-the-badge)
+![Netlify CDN Build Status](https://img.shields.io/netlify/dfd069d4-e4c6-42c3-aee5-d4115fd2bd37?logo=netlify&style=for-the-badge&label=Netlify%20Build)
 
 ### Data Structure
 
