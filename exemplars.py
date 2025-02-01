@@ -23,9 +23,6 @@ from babel.numbers import get_currency_symbol
 import icu
 import jsonschema
 
-# API version constant
-API_VERSION = "v1"
-
 # Mapping of exemplar types to their corresponding integer values used by ICU
 EXEMPLAR_TYPES: Dict[str, int] = {
     "main": 0,
@@ -263,7 +260,7 @@ def write_json_files(data: Dict[str, Any], output_dir: str) -> None:
     data (Dict[str, Any]): JSON data to write.
     output_dir (str): Directory to write the files to.
     """
-    json_dir = Path(output_dir) / API_VERSION
+    json_dir = Path(output_dir)
     json_dir.mkdir(parents=True, exist_ok=True)
     minified_data = json.dumps(
         data, separators=(",", ":"), ensure_ascii=False, sort_keys=True
@@ -281,7 +278,7 @@ def write_json_files(data: Dict[str, Any], output_dir: str) -> None:
         f.write(minified_data.encode("utf-8"))
 
 
-def create_json_dump(output_dir: str = "docs") -> None:
+def create_json_dump(output_dir: str = "api") -> None:
     """
     Create a JSON dump of locale data.
 
