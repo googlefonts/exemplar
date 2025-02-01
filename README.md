@@ -42,8 +42,12 @@ The JSON data can be accessed by GET request to one of the following endpoints:
 ### Endpoints Status
 
 ![GitHub CDN Build Status](https://img.shields.io/github/actions/workflow/status/googlefonts/exemplar/pages%2Fpages-build-deployment?branch=main&style=for-the-badge&logo=github&label=GitHub%20Build)
+![GitHub API Status](https://img.shields.io/website?url=https%3A%2F%2Fgooglefonts.github.io%2Fexemplar%2Fv1%2Fdata.json&style=for-the-badge&logo=github&label=GitHub%20API%20Status)
+
 
 ![Netlify CDN Build Status](https://img.shields.io/netlify/dfd069d4-e4c6-42c3-aee5-d4115fd2bd37?logo=netlify&style=for-the-badge&label=Netlify%20Build)
+![Netlify API Status](https://img.shields.io/website?url=https%3A%2F%2Fgooglefonts-exemplar.netlify.app%2Fv1%2Fdata.json&style=for-the-badge&logo=netlify&label=Netlify%20API%20Status)
+
 
 ### Data Structure
 
