@@ -58,6 +58,6 @@ def print_currency_symbols(currency_symbols: Dict[str, Dict[str, List[str]]]) ->
 
 
 if __name__ == "__main__":
-    filepath = Path(__file__).parent.parent / "docs" / "v1" / "data.json"
+    filepath = Path(__file__).parent.parent / "api" / "data.json"
     currency_symbols = get_currency_symbols(str(filepath))
     print_currency_symbols(currency_symbols)
