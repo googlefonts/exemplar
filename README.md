@@ -1,5 +1,9 @@
 # Exemplar
 
+![API version](https://img.shields.io/badge/API%20version-v1-blue)
+![GitHub Release](https://img.shields.io/github/v/release/googlefonts/exemplar)
+![ICU version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgooglefonts.github.io%2Fexemplar%2Fv1%2Ficu_exemplars-min.json&query=%24.icu_version&label=ICU%20version)
+
 ## About
 
 The Exemplar API project JSON endpoints include Unicode CLDR (Common Locale Data Repository) exemplar, number, punctuation and currency encoding data by BCP 47 locale tag. The goal of this project is to provide easy client access to localized encoding data in a widely supported JSON format.
@@ -30,13 +34,16 @@ https://googlefonts.github.io/exemplar/[VERSION]/[ENDPOINT]
 
 ### Endpoints
 
-The JSON data can be accessed at the following endpoints:
+The JSON data can be accessed by GET request to one of the following endpoints:
 
-- **Pretty-printed JSON**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars.json`
-- **Minified JSON**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json`
-- **Minified JSON, gzip compressed**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json.gz`
+- **GitHub CDN**: `https://googlefonts.github.io/exemplar/v1/icu_exemplars-min.json`
+- **Netlify CDN**: `https://googlefonts-exemplar.netlify.app/v1/icu_exemplars-min.json` 
 
-The JSON endpoints above are ordered largest to smallest by file size.
+### Endpoints Status
+
+![GitHub CDN Build Status](https://img.shields.io/github/actions/workflow/status/googlefonts/exemplar/pages%2Fpages-build-deployment?branch=main&style=for-the-badge&logo=github&label=GitHub%20Build)
+
+![Netlify CDN Build Status](https://img.shields.io/netlify/dfd069d4-e4c6-42c3-aee5-d4115fd2bd37?logo=netlify&style=for-the-badge&label=Netlify%20Build)
 
 ### Data Structure
 
