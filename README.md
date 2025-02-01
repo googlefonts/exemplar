@@ -29,7 +29,7 @@ The Exemplar API follows [semantic versioning](https://semver.org/) principles. 
 The API version is defined in the endpoint URL with the following syntax:
 
 ```
-https://googlefonts.github.io/exemplar/[VERSION]/[ENDPOINT]
+https://googlefonts.github.io/exemplar/[VERSION]/data.json
 ```
 
 ### Endpoints
