@@ -2,175 +2,134 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "properties": {
-      "icu_version": {
-        "type": "string"
-      },
-      "locales": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "object",
-          "properties": {
-            "main": {
-              "type": "object",
-              "properties": {
-                "single_chars": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+        "icu_version": {
+            "type": "string"
+        },
+        "locales": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "main": {
+                        "type": "object",
+                        "properties": {
+                            "single_chars": {
+                                "type": ["array", "null"],
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "sequences": {
+                                "type": ["array", "null"],
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": ["single_chars", "sequences"]
+                    },
+                    "auxiliary": {
+                        "type": "object",
+                        "properties": {
+                            "single_chars": {
+                                "type": ["array", "null"],
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "sequences": {
+                                "type": ["array", "null"],
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": ["single_chars", "sequences"]
+                    },
+                    "punctuation": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "case_insensitive": {
+                        "type": "object",
+                        "properties": {
+                            "single_chars": {
+                                "type": ["array", "null"],
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "sequences": {
+                                "type": ["array", "null"],
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": ["single_chars", "sequences"]
+                    },
+                    "case_mapping": {
+                        "type": "object",
+                        "properties": {
+                            "single_chars": {
+                                "type": ["array", "null"],
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "sequences": {
+                                "type": ["array", "null"],
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": ["single_chars", "sequences"]
+                    },
+                    "numbers": {
+                        "type": "object",
+                        "properties": {
+                            "decimal": { "type": "string" },
+                            "group": { "type": "string" },
+                            "percent": { "type": "string" },
+                            "zero_digit": { "type": "string" },
+                            "digit": { "type": "string" },
+                            "pattern_digit": { "type": "string" },
+                            "plus_sign": { "type": "string" },
+                            "minus_sign": { "type": "string" },
+                            "exponential": { "type": "string" },
+                            "per_mille": { "type": "string" },
+                            "infinity": { "type": "string" },
+                            "nan": { "type": "string" },
+                            "digits": {
+                                "type": "array",
+                                "items": { "type": "string" }
+                            }
+                        },
+                        "required": [
+                            "decimal", "group", "percent", "zero_digit", "digit",
+                            "pattern_digit", "plus_sign", "minus_sign", "exponential",
+                            "per_mille", "infinity", "nan", "digits"
+                        ]
+                    },
+                    "currency": {
+                        "type": ["string", "null"]
+                    }
                 },
-                "sequences": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              },
-              "required": ["single_chars", "sequences"]
-            },
-            "auxiliary": {
-              "type": "object",
-              "properties": {
-                "single_chars": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "sequences": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              },
-              "required": ["single_chars", "sequences"]
-            },
-            "punctuation": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "case_insensitive": {
-              "type": "object",
-              "properties": {
-                "single_chars": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "sequences": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              },
-              "required": ["single_chars", "sequences"]
-            },
-            "case_mapping": {
-              "type": "object",
-              "properties": {
-                "single_chars": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "sequences": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              },
-              "required": ["single_chars", "sequences"]
-            },
-            "numbers": {
-              "type": "object",
-              "properties": {
-                "decimal": {
-                  "type": "string"
-                },
-                "group": {
-                  "type": "string"
-                },
-                "percent": {
-                  "type": "string"
-                },
-                "zero_digit": {
-                  "type": "string"
-                },
-                "digit": {
-                  "type": "string"
-                },
-                "pattern_digit": {
-                  "type": "string"
-                },
-                "plus_sign": {
-                  "type": "string"
-                },
-                "minus_sign": {
-                  "type": "string"
-                },
-                "exponential": {
-                  "type": "string"
-                },
-                "per_mille": {
-                  "type": "string"
-                },
-                "infinity": {
-                  "type": "string"
-                },
-                "nan": {
-                  "type": "string"
-                },
-                "digits": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              },
-              "required": [
-                "decimal",
-                "group",
-                "percent",
-                "zero_digit",
-                "digit",
-                "pattern_digit",
-                "plus_sign",
-                "minus_sign",
-                "exponential",
-                "per_mille",
-                "infinity",
-                "nan",
-                "digits"
-              ]
-            },
-            "currency": {
-              "type": ["string", "null"]
+                "required": [
+                    "main", "auxiliary", "punctuation", "case_insensitive",
+                    "case_mapping", "numbers", "currency"
+                ]
             }
-          },
-          "required": [
-            "main",
-            "auxiliary",
-            "punctuation",
-            "case_insensitive",
-            "case_mapping",
-            "numbers",
-            "currency"
-          ]
+        },
+        "display_names": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            }
         }
-      },
-      "display_names": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        }
-      }
     },
     "required": ["icu_version", "locales", "display_names"]
-  }
+}
