@@ -1,7 +1,7 @@
 import pytest
 import json
 from pathlib import Path
-from unittest.mock import patch, mock_open, MagicMock
+from unittest.mock import patch, mock_open
 
 import exemplars
 
@@ -345,7 +345,7 @@ def test_validate_json_data_valid(valid_data):
     # Read the actual schema.json file
     schema_path = Path(__file__).parent.parent / "schema.json"
     with schema_path.open("r", encoding="utf-8") as f:
-        schema = json.load(f)
+        _ = json.load(f)
 
     # This should not raise any exceptions
     exemplars.validate_json_data(valid_data)
@@ -358,7 +358,7 @@ def test_validate_json_data_missing_fields(invalid_data_missing_field):
     # Read the actual schema.json file
     schema_path = Path(__file__).parent.parent / "schema.json"
     with schema_path.open("r", encoding="utf-8") as f:
-        schema = json.load(f)
+        _ = json.load(f)
 
     with pytest.raises(SystemExit):
         exemplars.validate_json_data(invalid_data_missing_field)
@@ -371,7 +371,7 @@ def test_validate_json_data_type_mismatch(invalid_data_type_mismatch):
     # Read the actual schema.json file
     schema_path = Path(__file__).parent.parent / "schema.json"
     with schema_path.open("r", encoding="utf-8") as f:
-        schema = json.load(f)
+        _ = json.load(f)
 
     with pytest.raises(SystemExit):
         exemplars.validate_json_data(invalid_data_type_mismatch)
