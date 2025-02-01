@@ -262,12 +262,12 @@ def write_json_files(data: Dict[str, Any], output_dir: str) -> None:
     minified_data = json.dumps(
         data, separators=(",", ":"), ensure_ascii=False, sort_keys=True
     )
-    with (json_dir / "icu_exemplars.json").open("w", encoding="utf-8") as f:
+    with (json_dir / "data-pp.json").open("w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4, sort_keys=True)
-    with (json_dir / "icu_exemplars-min.json").open("w", encoding="utf-8") as f:
+    with (json_dir / "data.json").open("w", encoding="utf-8") as f:
         f.write(minified_data)
     with gzip.GzipFile(
-        filename=str(json_dir / "icu_exemplars-min.json.gz"),
+        filename=str(json_dir / "data-min.json.gz"),
         mode="wb",
         compresslevel=9,
         mtime=0,
