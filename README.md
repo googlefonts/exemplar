@@ -68,14 +68,14 @@ The JSON data follow a [repository-defined schema](schema.json). Below is an ove
         "single_chars": ["char1", "char2"],
         "sequences": ["seq1", "seq2"]
       },
-      "punctuation": ["punct1", "punct2"],
+      "punctuation": ["punct1", "punct2"],  // might be null
       "case_insensitive": {
-        "single_chars": ["char1", "char2"],
-        "sequences": ["seq1", "seq2"]
+        "single_chars": ["char1", "char2"],  // might be null
+        "sequences": ["seq1", "seq2"]  // might be null
       },
       "case_mapping": {
-        "single_chars": ["char1", "char2"],
-        "sequences": ["seq1", "seq2"]
+        "single_chars": ["char1", "char2"],  // might be null
+        "sequences": ["seq1", "seq2"]  // might be null
       },
       "numbers": {
         "decimal": "decimal_char",
@@ -92,7 +92,7 @@ The JSON data follow a [repository-defined schema](schema.json). Below is an ove
         "nan": "nan_char",
         "digits": ["digit1", "digit2"]
       },
-      "currency": "currency_symbol"
+      "currency": "currency_symbol"  // might be null
     }
   },
   "display_names": {
