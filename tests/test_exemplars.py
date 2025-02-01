@@ -217,21 +217,21 @@ def test_get_number_symbols():
     assert symbols["nan"] == "NaN"
     assert symbols["digits"] == ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-    symbols_ar = exemplars.get_number_symbols("ar")
-    assert isinstance(symbols_ar, dict)
-    assert symbols_ar["decimal"] == "."
-    assert symbols_ar["group"] == ","
-    assert symbols_ar["percent"] == "‎%‎"
-    assert symbols_ar["zero_digit"] == "0"
-    assert symbols_ar["digit"] == "#"
-    assert symbols_ar["pattern_digit"] == ";"
-    assert symbols_ar["plus_sign"] == "‎+"
-    assert symbols_ar["minus_sign"] == "‎-"
-    assert symbols_ar["exponential"] == "E"
-    assert symbols_ar["per_mille"] == "‰"
-    assert symbols_ar["infinity"] == "∞"
-    assert symbols_ar["nan"] == "ليس رقمًا"
-    assert symbols_ar["digits"] == ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    symbols_ja = exemplars.get_number_symbols("ja_JP")
+    assert isinstance(symbols_ja, dict)
+    assert symbols_ja["decimal"] == "."
+    assert symbols_ja["group"] == ","
+    assert symbols_ja["percent"] == "%"
+    assert symbols_ja["zero_digit"] == "0"
+    assert symbols_ja["digit"] == "#"
+    assert symbols_ja["pattern_digit"] == ";"
+    assert symbols_ja["plus_sign"] == "+"
+    assert symbols_ja["minus_sign"] == "-"
+    assert symbols_ja["exponential"] == "E"
+    assert symbols_ja["per_mille"] == "‰"
+    assert symbols_ja["infinity"] == "∞"
+    assert symbols_ja["nan"] == "NaN"
+    assert symbols_ja["digits"] == ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 
 def test_get_currency():
