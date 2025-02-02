@@ -6,19 +6,52 @@
 
 ## About
 
-The Exemplar API project JSON endpoints include Unicode CLDR (Common Locale Data Repository) exemplar, number, punctuation and currency encoding data by BCP 47 locale tag. The goal of this project is to provide easy client access to localized encoding data in a widely supported JSON format.
+The Exemplar API project JSON endpoints include Unicode CLDR (Common Locale Data Repository) exemplar encoding data by [Unicode locale](https://unicode-org.github.io/icu/userguide/locale/#the-locale-concept). The goal of this project is to provide simple GET client access to localized encoding data in a public, widely-supported JSON format endpoint.
 
-This project leverages the ICU (International Components for Unicode) library to generate localization data that are consistent with the latest Unicode data standards.
+This project leverages the [ICU (International Components for Unicode) library](https://unicode-org.github.io/icu/) to distribute software internationalization data that are consistent with the latest Unicode data standards.
 
-## Data
+## Exemplar Data Categories
 
-The JSON API endpoints include the following data:
-- **ICU Version**: the ICU library version used to generate the data.
-- **Exemplar Characters**: Localized exemplar encoding sets, categorized into main, auxiliary, case-insensitive, & case-mapped types. Separate fields are defined for single characters and sequences, where sequences are defined as strings of multiple exemplar encodings as defined by the ICU library.
-- **Number and Number Symbols**: Localized numbers and number symbols used for formatting numbers in various locales, including decimal separators, grouping separators, percent signs, and more.
-- **Punctuation**: Localized punctuation marks.
-- **Currency Symbols**: Localized currency symbols or currency strings
-- **Locale Tag Display Names**: Human-friendly locale names by locale tag.
+The following data are categorized by [Unicode locale](https://unicode-org.github.io/icu/userguide/locale/#the-locale-concept) tag:
+
+- **Main Exemplars** [main]
+  - Minimum base set of characters used in the language. Note: only includes lowercase for languages that support different case forms.
+  - Example [Engish (United States)]: abcdefghijklmnopqrstuvwxyz
+  - Example [Vietnamese (Vietnam)]: aáàăắằẵẳâấầẫẩãảạặậbcdđeéèêếềễểẽẻẹệghiíìĩỉịklmnoóòôốồỗổõỏơớờỡởợọộpqrstuúùũủưứừữửựụvxyýỳỹỷỵ
+  - Example [Hindi (India)]:  ़ँंःॐअआइईउऊऋऌऍएऐऑओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलळवशषसहऽािीुूृॅेैॉोौ्
+- **Auxiliary Exemplars** [auxiliary]
+  - Foreign borrowings and specialized usage exemplars in the language. 
+  - Example [Engish (United States)]: áàăâåäãāæçéèĕêëēíìĭîïīñóòŏôöøōœúùŭûüūÿ
+  - Example [Vietnamese (Vietnam)]: fjwz
+  - Example [Hindi (India)]: ‌‍ॄ
+- **Case-insensitive Exemplars** [case_insensitive]
+  - Defines exemplar equivalence, irrespective of case, in the language.
+  - Example [Engish (United States)]: aAbBcCdDeEfFgGhHiIjJkKKlLmMnNoOpPqQrRsSſtTuUvVwWxXyYzZ
+  - Example [Vietnamese (Vietnam)]: aAáÁàÀăĂắẮằẰẵẴẳẲâÂấẤầẦẫẪẩẨãÃảẢạẠặẶậẬbBcCdDđĐeEéÉèÈêÊếẾềỀễỄểỂẽẼẻẺẹẸệỆgGhHiIíÍìÌĩĨỉỈịỊkKKlLmMnNoOóÓòÒôÔốỐồỒỗỖổỔõÕỏỎơƠớỚờỜỡỠởỞợỢọỌộỘpPqQrRsSſtTuUúÚùÙũŨủỦưƯứỨừỪữỮửỬựỰụỤvVxXyYýÝỳỲỹỸỷỶỵỴ
+  - Example [Hindi (India)]:  ़ँंःॐअआइईउऊऋऌऍएऐऑओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलळवशषसहऽािीुूृॅेैॉोौ्
+- **Case-mapped Exemplars** [case_mapping]
+  - Defines the relationship between uppercase, lowercase and title case exemplars in the language for ICU case mapping. [Unicode documentation](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html)
+  - Example [Engish (United States)]: aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ
+  - Example [Vietnamese (Vietnam)]: aAáÁàÀăĂắẮằẰẵẴẳẲâÂấẤầẦẫẪẩẨãÃảẢạẠặẶậẬbBcCdDđĐeEéÉèÈêÊếẾềỀễỄểỂẽẼẻẺẹẸệỆgGhHiIíÍìÌĩĨỉỈịỊkKlLmMnNoOóÓòÒôÔốỐồỒỗỖổỔõÕỏỎơƠớỚờỜỡỠởỞợỢọỌộỘpPqQrRsStTuUúÚùÙũŨủỦưƯứỨừỪữỮửỬựỰụỤvVxXyYýÝỳỲỹỸỷỶỵỴ
+  - Example [Hindi (India)]:  ़ँंःॐअआइईउऊऋऌऍएऐऑओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलळवशषसहऽािीुूृॅेैॉोौ्
+- **Punctuation Exemplars** [punctuation]
+  - Punctuation customarily used in the language.
+  - Example [Engish (United States)]: -‐‑–—,;:!?.…'‘’"“”()[]§@*/&#†‡′″
+  - Example [Vietnamese (Vietnam)]: -‐‑–—,;:!?.…'‘’"“”()[]§@*/&#†‡′″
+  - Example [Hindi (India)]: -‐‑–—,;:!?.…।॥'‘’"“”()[]§@*/#†‡′″॰
+- **Numbers Exemplars** [numbers]
+  - The number digits used in the language.
+  - Example [Engish (United States)]: 0123456789
+  - Example [Vietnamese (Vietnam)]: 0123456789
+  - Example [Hindi (India)]: 0123456789
+  - Example (Arabic (Egypt)): ٠١٢٣٤٥٦٧٨٩
+- **Currency Exemplars** [currency]
+  - The currency symbol used for formatting currency numbers in the locale.
+  - Example [Engish (United States)]: $
+  - Example [Vietnamese (Vietnam)]: ₫
+  - Example [Hindi (India)]: ₹
+
+Additional data including locale tag display names and ICU library definition version are available.
 
 ### Endpoints
 
@@ -33,7 +66,7 @@ https://cdn.jsdelivr.net/gh/googlefonts/exemplar@1/api/data.json
 
 #### Endpoint Versioning
 
-The Exemplar API follows [semantic versioning](https://semver.org/) principles. Backwards compatibility is assured within major version releases. For example, all `v1` endpoints will remain backwards compatible with any changes or additions made in the `v1.x.x` releases.
+The Exemplar API follows [semantic versioning](https://semver.org/) principles. Backwards compatibility is assured within major version releases. For example, all `v1` endpoints will remain backwards compatible with any changes or additions made across the `v1.x.x` releases.
 
 The root endpoint is:
 
@@ -117,7 +150,7 @@ The JSON data follow a [repository-defined schema](schema.json). Below is an ove
 }
 ```
 
-**Note:** The following fields  may have null values that represent unavailable data:
+**Note:** The following fields can have null values when data do not exist or are not available:
 - `punctuation`
 - `case_insensitive.single_chars`
 - `case_insensitive.sequences`
