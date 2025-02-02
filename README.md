@@ -163,6 +163,7 @@ The JSON data follow a [repository-defined schema](schema.json). Below is an ove
 There are demo scripts in the [`examples` directory](examples/) that demonstrate how to use the Exemplar project JSON data. These examples include:
 
 - [**currency.py**](examples/currency.py): Demonstrates how to extract and print localized currency symbols and their Unicode codepoints from the JSON data.
+- [**locsets.py**](examples/locsets.py): Demonstrates how to extract and print locale-specific exemplar character sets from the JSON data. This script takes a locale ID as a command-line argument and reports the main, auxiliary, case-insensitive, case-mapping, numbers, punctuation, and currency exemplars for the specified locale.
 
 ## Development
 
