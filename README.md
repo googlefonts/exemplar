@@ -55,8 +55,8 @@ Additional data including locale tag display names and ICU library definition ve
 
 ### Endpoints
 
-![jsDelivr Major Version Release Status](https://img.shields.io/website?url=https://cdn.jsdelivr.net/gh/googlefonts/exemplar@1/api/data.json&style=for-the-badge&logo=jsdelivr&label=jsDelivr%20v1%20Major)
-![jsDelivr Current Release Status](https://img.shields.io/website?url=https://cdn.jsdelivr.net/gh/googlefonts/exemplar@1.0.0/api/data.json&style=for-the-badge&logo=jsdelivr&label=jsDelivr%20v1.0.0)
+![jsDelivr Major Version Release Status](https://img.shields.io/website?url=https://cdn.jsdelivr.net/gh/googlefonts/exemplar@1/api/data.json&style=for-the-badge&logo=jsdelivr&label=v1%20Major%20API)
+![jsDelivr Current Release Status](https://img.shields.io/website?url=https://cdn.jsdelivr.net/gh/googlefonts/exemplar@1.0.0/api/data.json&style=for-the-badge&logo=jsdelivr&label=v1.0.0%20API)
 
 #### Latest Release
 
