@@ -15,12 +15,12 @@ This project leverages the [ICU (International Components for Unicode) library](
 The following data are categorized by [Unicode locale](https://unicode-org.github.io/icu/userguide/locale/#the-locale-concept) tag:
 
 - **Main Exemplars** [main]
-  - Minimum base set of characters used in the language. Note: only includes lowercase for languages that support different case forms.
+  - Minimum base set of characters used in the language. Note: only includes lowercase for languages that support different case forms. [CLDR documentation](https://cldr.unicode.org/translation/core-data/exemplars#exemplar-characters)
   - Example [Engish (United States)]: abcdefghijklmnopqrstuvwxyz
   - Example [Vietnamese (Vietnam)]: aáàăắằẵẳâấầẫẩãảạặậbcdđeéèêếềễểẽẻẹệghiíìĩỉịklmnoóòôốồỗổõỏơớờỡởợọộpqrstuúùũủưứừữửựụvxyýỳỹỷỵ
   - Example [Hindi (India)]:  ़ँंःॐअआइईउऊऋऌऍएऐऑओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलळवशषसहऽािीुूृॅेैॉोौ्
 - **Auxiliary Exemplars** [auxiliary]
-  - Foreign borrowings and specialized usage exemplars in the language. 
+  - Foreign borrowings and specialized usage exemplars in the language. [CLDR documentation](https://cldr.unicode.org/translation/core-data/exemplars#exemplar-characters)
   - Example [Engish (United States)]: áàăâåäãāæçéèĕêëēíìĭîïīñóòŏôöøōœúùŭûüūÿ
   - Example [Vietnamese (Vietnam)]: fjwz
   - Example [Hindi (India)]: ‌‍ॄ
@@ -30,17 +30,17 @@ The following data are categorized by [Unicode locale](https://unicode-org.githu
   - Example [Vietnamese (Vietnam)]: aAáÁàÀăĂắẮằẰẵẴẳẲâÂấẤầẦẫẪẩẨãÃảẢạẠặẶậẬbBcCdDđĐeEéÉèÈêÊếẾềỀễỄểỂẽẼẻẺẹẸệỆgGhHiIíÍìÌĩĨỉỈịỊkKKlLmMnNoOóÓòÒôÔốỐồỒỗỖổỔõÕỏỎơƠớỚờỜỡỠởỞợỢọỌộỘpPqQrRsSſtTuUúÚùÙũŨủỦưƯứỨừỪữỮửỬựỰụỤvVxXyYýÝỳỲỹỸỷỶỵỴ
   - Example [Hindi (India)]:  ़ँंःॐअआइईउऊऋऌऍएऐऑओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलळवशषसहऽािीुूृॅेैॉोौ्
 - **Case-mapped Exemplars** [case_mapping]
-  - Defines the relationship between uppercase, lowercase and title case exemplars in the language for ICU case mapping. [Unicode documentation](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html)
+  - Defines the relationship between uppercase, lowercase and title case exemplars in the language for ICU case mapping. [ICU documentation](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html)
   - Example [Engish (United States)]: aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ
   - Example [Vietnamese (Vietnam)]: aAáÁàÀăĂắẮằẰẵẴẳẲâÂấẤầẦẫẪẩẨãÃảẢạẠặẶậẬbBcCdDđĐeEéÉèÈêÊếẾềỀễỄểỂẽẼẻẺẹẸệỆgGhHiIíÍìÌĩĨỉỈịỊkKlLmMnNoOóÓòÒôÔốỐồỒỗỖổỔõÕỏỎơƠớỚờỜỡỠởỞợỢọỌộỘpPqQrRsStTuUúÚùÙũŨủỦưƯứỨừỪữỮửỬựỰụỤvVxXyYýÝỳỲỹỸỷỶỵỴ
   - Example [Hindi (India)]:  ़ँंःॐअआइईउऊऋऌऍएऐऑओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलळवशषसहऽािीुूृॅेैॉोौ्
 - **Punctuation Exemplars** [punctuation]
-  - Punctuation customarily used in the language.
+  - Punctuation customarily used with the language. [CLDR documentation](https://cldr.unicode.org/translation/core-data/exemplars#exemplar-characters)
   - Example [Engish (United States)]: -‐‑–—,;:!?.…'‘’"“”()[]§@*/&#†‡′″
   - Example [Vietnamese (Vietnam)]: -‐‑–—,;:!?.…'‘’"“”()[]§@*/&#†‡′″
   - Example [Hindi (India)]: -‐‑–—,;:!?.…।॥'‘’"“”()[]§@*/#†‡′″॰
 - **Numbers Exemplars** [numbers]
-  - The number digits used in the language.
+  - The number digits used in the locale.
   - Example [Engish (United States)]: 0123456789
   - Example [Vietnamese (Vietnam)]: 0123456789
   - Example [Hindi (India)]: 0123456789
