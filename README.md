@@ -44,7 +44,7 @@ The following data are categorized by [Unicode locale](https://unicode-org.githu
   - Example [Engish (United States)]: 0123456789
   - Example [Vietnamese (Vietnam)]: 0123456789
   - Example [Hindi (India)]: 0123456789
-  - Example (Arabic (Egypt)): ٠١٢٣٤٥٦٧٨٩
+  - Example [Arabic (Egypt)]: ٠١٢٣٤٥٦٧٨٩
 - **Currency Exemplars** [currency]
   - The currency symbol used for formatting currency numbers in the locale.
   - Example [Engish (United States)]: $
