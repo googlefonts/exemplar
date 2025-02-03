@@ -6,7 +6,7 @@
 
 ## About
 
-The Exemplar API project JSON endpoints include Unicode CLDR (Common Locale Data Repository) exemplar encoding data by [Unicode locale](https://unicode-org.github.io/icu/userguide/locale/#the-locale-concept). The goal of this project is to provide simple GET client access to localized encoding data in a public, widely-supported JSON format endpoint.
+The Exemplar API project JSON endpoints include Unicode CLDR (Common Locale Data Repository) exemplar encoding data by [Unicode locale](https://unicode-org.github.io/icu/userguide/locale/#the-locale-concept). The goal of this project is to provide simple GET client access to localized exemplar encoding data in a public, widely-supported JSON format endpoint.
 
 This project leverages the [ICU (International Components for Unicode) library](https://unicode-org.github.io/icu/) to distribute software internationalization data that are consistent with the latest Unicode data standards.
 
