@@ -215,8 +215,7 @@ def generate_locale_data() -> Dict[str, Any]:
     Dict[str, Any]: Dictionary containing locale data.
     """
     data = {"icu_version": get_icu_version(), "locales": {}, "display_names": {}}
-    for localeID in icu.Locale.getAvailableLocales():
-        localeID = normalize_locale_id(localeID)
+    for localeID in map(normalize_locale_id, icu.Locale.getAvailableLocales()):
         data["locales"][localeID] = {
             "main": categorize_exemplars(get_exemplars(localeID, "main")),
             "auxiliary": categorize_exemplars(get_exemplars(localeID, "auxiliary")),
