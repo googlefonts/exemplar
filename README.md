@@ -56,7 +56,7 @@ Additional data including locale tag display names and ICU library definition ve
 ### Endpoints
 
 ![jsDelivr Major Version Release Status](https://img.shields.io/website?url=https://cdn.jsdelivr.net/gh/googlefonts/exemplar@1/api/data.json&style=for-the-badge&logo=jsdelivr&label=v1%20Major%20API)
-![jsDelivr Current Release Status](https://img.shields.io/website?url=https://cdn.jsdelivr.net/gh/googlefonts/exemplar@1.0.0/api/data.json&style=for-the-badge&logo=jsdelivr&label=v1.0.0%20API)
+![jsDelivr Current Release Status](https://img.shields.io/website?url=https://cdn.jsdelivr.net/gh/googlefonts/exemplar@1.1.0/api/data.json&style=for-the-badge&logo=jsdelivr&label=v1.1.0%20API)
 
 #### Latest Release
 
@@ -95,7 +95,7 @@ Automatically update to new point releases across a major release cycle by using
 Define a pinned point release with a full release version number in `MAJOR.MINOR.PATCH` syntax:
 
 ```
-/gh/googlefonts/exemplar@1.0.0/api/data.json
+/gh/googlefonts/exemplar@1.1.0/api/data.json
 ```
 
 ### Data Structure
