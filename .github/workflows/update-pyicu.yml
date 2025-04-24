@@ -64,7 +64,7 @@ jobs:
 
       - name: Create Pull Request
         if: steps.check_changes.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "auto(deps): update pyicu from ${{ steps.get_old_version.outputs.OLD_PYICU_VERSION }} to ${{ steps.get_new_version.outputs.NEW_PYICU_VERSION }}"
