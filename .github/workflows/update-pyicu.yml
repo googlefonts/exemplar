@@ -1,0 +1,78 @@
+name: Update PyICU Dependency
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write # Needed to commit changes to requirements.txt
+  pull-requests: write # Needed to create the pull request
+
+jobs:
+  update-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+      - name: Install ICU development libraries
+        run: sudo apt-get update && sudo apt-get install -y libicu-dev
+
+      - name: Install pip-tools
+        run: python -m pip install pip-tools
+
+      - name: Get current PyICU version
+        id: get_old_version
+        run: |
+          OLD_VERSION=$(grep -i '^pyicu==' requirements.txt | cut -d'=' -f3 | tr -d '[:space:]')
+          echo "OLD_PYICU_VERSION=${OLD_VERSION:-'not found'}" >> $GITHUB_OUTPUT
+
+      - name: Update PyICU dependency
+        id: compile
+        run: pip-compile --upgrade-package pyicu --output-file=requirements.txt requirements.in
+
+      - name: Get new PyICU version
+        id: get_new_version
+        run: |
+          NEW_VERSION=$(grep -i '^pyicu==' requirements.txt | cut -d'=' -f3 | tr -d '[:space:]')
+          echo "NEW_PYICU_VERSION=${NEW_VERSION:-'not found'}" >> $GITHUB_OUTPUT
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          # Compare the extracted version strings
+          if [[ "${{ steps.get_old_version.outputs.OLD_PYICU_VERSION }}" != "${{ steps.get_new_version.outputs.NEW_PYICU_VERSION }}" ]]; then
+            echo "PyICU version changed from ${{ steps.get_old_version.outputs.OLD_PYICU_VERSION }} to ${{ steps.get_new_version.outputs.NEW_PYICU_VERSION }}."
+            # Optionally, still verify the file changed, though it should have if the version did.
+            if ! git diff --quiet requirements.txt; then
+               echo "changed=true" >> $GITHUB_OUTPUT
+            else
+               echo "Version mismatch detected but requirements.txt file appears unchanged. Not creating PR."
+               echo "changed=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "PyICU version (${{ steps.get_new_version.outputs.NEW_PYICU_VERSION }}) did not change."
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "auto(deps): update pyicu from ${{ steps.get_old_version.outputs.OLD_PYICU_VERSION }} to ${{ steps.get_new_version.outputs.NEW_PYICU_VERSION }}"
+          title: "Update PyICU to ${{ steps.get_new_version.outputs.NEW_PYICU_VERSION }}"
+          body: |
+            Updates the PyICU dependency from version `${{ steps.get_old_version.outputs.OLD_PYICU_VERSION }}` to `${{ steps.get_new_version.outputs.NEW_PYICU_VERSION }}`.
+
+            Triggered by the `update-pyicu` workflow.
+          branch: "dependencies/update-pyicu-${{ steps.get_new_version.outputs.NEW_PYICU_VERSION }}"
+          delete-branch: true # Deletes the branch once the PR is merged/closed
+          labels: dependencies, python
