@@ -6,3 +6,11 @@ updates:
     schedule:
       interval: "daily"
       time: "00:00"
+    ignore:
+      - dependency-name: "pyicu"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "00:00"
