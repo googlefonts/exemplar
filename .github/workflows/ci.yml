@@ -6,21 +6,17 @@ permissions:
 on:
   push:
     branches:
-      - "*" # This will trigger on pushes to *any* branch
-
-  pull_request_target:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    # Condition to prevent duplicate runs
-    if: github.event_name == 'push' || (github.event_name == 'pull_request_target' && github.event.pull_request.head.sha == github.sha)
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          # Important: Fetch the correct commit for pull_request_target
-          ref: ${{ github.event.pull_request.head.sha }} # For pull_request_target
 
       - name: Set up Python
         uses: actions/setup-python@v5
